@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>Simple JS Recipe Calculator</title>
+  </head>
+  <body>
+    <header>
+      <h1>Simple JS Recipe Calculator</h1>
+    </header>
+    <main>
+      <form class="og-form">
+        <fieldset class="name-field">
+          <legend><h2>Recipe Name</h2></legend>
+          <input type="text" name="recipe-name" id="recipe-name" placeholder="Enter Recipe Name">
+        </fieldset>
+        <fieldset class="ingredients-field">
+          <legend><h2>Ingredients</h2></legend>
+          <div class="ingredient-inputs">
+            <div class="row header-ing">
+              <h3 class="category">QTY.</h3>
+              <h3 class="category">MEASUREMENT</h3>
+              <h3 class="category">INGREDIENT</h3>
+            </div>
+            <div class="row" id="ing-1">
+              <input type="number" name="qty-1" id="qty-1" placeholder="#" class="quantity">
+              <select name="meas-1" id="meas-1" class="measure">
+                <option class="default" value="pick-type" selected disabled>Pick Type</option>
+                <optgroup label="Dry">
+                  <option value="pinch">Pinches</option>
+                  <option value="dash">Dashes</option>
+                  <option value="ounce">Ounces</option>
+                  <option value="teaspoon">Teaspoons</option>
+                  <option value="tablespoon">Tablespoons</option>
+                  <option value="cup">Cups</option>
+                  <option value="pound">Pounds</option>
+                  <option value="each">Each</option>
+                </optgroup>
+                <optgroup label="Liquids">
+                  <option value="ounce">Ounces</option>
+                  <option value="teaspoon">Teaspoons</option>
+                  <option value="tablespoon">Tablespoons</option>
+                  <option value="cup">Cups</option>
+                  <option value="pint">Pints</option>
+                  <option value="quart">Quarts</option>
+                  <option value="gallon">Gallons</option>
+                </optgroup>
+              </select>
+              <input type="text" name="ing-name-1" id="ing-name-1" class="ing-name" placeholder="Name of Ingredient">
+              <button type="button" class="delete-btn">❌</button>
+            </div>
+            <div class="row ing-2">
+              <input type="number" name="qty-2" id="qty-2" class="quantity" placeholder="#">
+              <select name="meas-2" id="meas-2" class="measure">
+                <option>Cup</option>
+                <option>Pint</option>
+                <option>Quart</option>
+              </select>
+              <input type="text" name="ing-name-2" id="ing-name-2" class="ing-name" placeholder="Name of Ingredient">
+              <button class="delete-btn" id="delete-btn">❌</button>
+            </div>
+            <div class="row ing-3">
+              <input type="number" name="qty-3" id="qty-3"  class="quantity" placeholder="#">
+              <select name="meas-3" id="meas-3" class="measure">
+                <option>Cup</option>
+                <option>Pint</option>
+                <option>Quart</option>
+              </select>
+              <input type="text" name="ing-name-3" id="ing-name-3" class="ing-name" placeholder="Name of Ingredient">
+              <button class="delete-btn" id="delete-btn">❌</button>
+            </div>
+          </div>
+          <button class="btn add-row" id="add-row-btn">+ Add Ingredient</button>
+        </fieldset>
+        <fieldset class="conversion-field">
+          <legend><h2>Target Portion Size</h2></legend>
+          <label for="og-portion">
+            Original Portion
+          </label>
+          <input type="number" name="og-portion" id="og-portion" placeholder="Original #">
+          <label for="scaled-portion">
+            Scaled Portion
+          </label>
+          <input type="number" name="scaled-portion" id="scaled-portion" placeholder="Scaled #">
+        </fieldset>
+        <div class="form-btns">
+          <input type="submit" name="submit-form" class="btn submit-btn" id="submit-form" value="Resize Recipe">
+          <input type="reset" name="reset-form" class="btn reset-btn" id="reset-form">
+        </div>
+      </form>
+      <section class="scale-field"></section>
+    </main>
+  </body>
+  <footer>
+    <p class="credit">Made with ❤️ by L Jackson</p>
+  </footer>
+  <script rel="javascript" src="assets/js/script.js"></script>
+</html>
