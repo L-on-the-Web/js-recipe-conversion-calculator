@@ -1,6 +1,6 @@
 # Simple JS Recipe Calculator
 
-An application coded using basic HTML, CSS, and JavaScript to calculate recipe portions using the recipe conversion formula. Optimized for mobile devices.
+An application coded using basic HTML, CSS, and JavaScript to calculate recipe portions using the recipe conversion formula. Built using a mobile-first approach.
 
 ## Technologies
 - HTML
@@ -18,8 +18,14 @@ An application coded using basic HTML, CSS, and JavaScript to calculate recipe p
 - [X] Append results to scaled section when 'Resize Recipe' is pressed
 - [X] Have number of rows filled determine how many appended rows there should be
 - [ ] Perform basic measurement conversion when scaling
-- [ ] Add form validation before submitting
+- [X] Add form validation before submitting
 - [ ] Replace previous results when resubmitting
+- [X] Change decimals to fractions
 
 ### CSS
 - [ ] Optimize desktop layout
+- [ ] Optimize mobile layout
+
+## Optional Additions
+- [ ] Convert user inputted fractions to decimals
+- [ ] Switch views between fractions and decimals

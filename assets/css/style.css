@@ -14,53 +14,56 @@ html {
 
 input, button {
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 4px;
   transition: 0.3s ease;
 }
 
 input {
-  border: 1px solid lightslategray;
+  border: 1px solid rgb(188, 195, 182);
 }
 
 input:focus {
   border-color: darkgray;
 }
 
+select {
+  padding: 10px;
+  border: 1px solid rgb(188, 195, 182);
+}
+
 button {
-  border: 1px solid slategray;
+  border: 1px solid rgb(188, 195, 182);
   cursor: pointer;
 }
 
-.default {
-  color: grey;
+.error {
+  color: red;
+  font-size: 0.825rem;
+  /*font-weight: 700;*/
 }
 
 /*--- Main Content ---*/
 body {
-  /* padding: min(25em, 3%); */
-  width: 438px;
+  width: 100%;
+  max-width: 480px;
   height: 100dvh;
   display: grid;
   grid-auto-rows: auto 1fr auto;
-  background-color: ghostwhite;
+  background-color: lightgray;
   font-family: "Noto Sans", sans-serif;
 }
-
-/* main {
-  width: 100dvw;
-} */
 
 form {
   display: flex;
   flex-direction: column;
-  background-color: lightgray;
-  border-radius: 5px;
-  box-shadow: 3px 3px 2px #f8f8f8;
+  background-color: whitesmoke;
+  box-shadow: 2px 8px 10px dimgrey;
 }
 
 fieldset {
   margin-top: 20px;
   padding: 10px 5px;
+  border: none;
 }
 
 .conversion-field label {
@@ -77,7 +80,7 @@ fieldset {
 
 .row {
   display: grid;
-  grid-template-columns: 40px 40% 40% 20px;
+  grid-template-columns: 35px 40% 40% 15px;
   justify-content: space-between;
   margin-top: 10px;
 }
@@ -90,10 +93,6 @@ fieldset {
   width: 100%;
 }
 
-select {
-  padding: 10px;
-}
-
 input[name="recipe-name"] {
   width: 100%;
 }
@@ -104,7 +103,6 @@ input[name*="qty"]::-webkit-inner-spin-button {
 }
 
 input[name*="qty"] {
-  width: 40px;
   -moz-appearance: textfield;
   appearance: textfield;
 }
@@ -124,7 +122,7 @@ button.delete-btn {
 }
 
 .form-btns {
-  margin: 10px;
+  margin: 10px 5px;
   display: flex;
   justify-content: space-between;
 }
@@ -134,37 +132,52 @@ input[type="submit"], input[type="reset"] {
 }
 
 input[type="submit"] {
-  /* margin-top: 10px; */
-  /* align-self: center; */
-  width: 68%;
-  background-color: mediumblue;
+  margin-right: 10px;
+  width: 70%;
+  background-color: rgb(0, 96, 131);
   color: white;
+  font-weight: 600;
   transition: 0.3s ease;
 }
 
 input[type="submit"]:hover, input[type="submit"]:focus {
-  background-color: blue;
+  background-color: rgba(0, 174, 239);
 }
 
 input[type="reset"] {
   width: 30%;
+  font-weight: 600;
 }
 
-.scale-field {
+/* .scale-field {
   padding: 10px 5px;
   background-color: #f8f8f8;
-}
+} */
 
 .scale-card {
-  margin: 10px;
+  margin-block: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: whitesmoke;
+}
+
+.scale-content {
   padding: 10px;
   border: 1px dashed grey;
   border-radius: 8px;
 }
 
 .scaled-row {
+  padding-top: 10px;
   display: grid;
-  grid-template-columns: 40px 1fr 1fr;
+  grid-template-columns: 40px 1fr 1fr 1fr;
   justify-content: space-between;
-  margin-top: 10px;
+  margin: 10px 5px 0;
+  border-top: 1px solid lightgray;
+}
+
+.credit {
+  margin-block: 10px;
+  text-align: center;
+  font-size: 0.825rem;
 }
