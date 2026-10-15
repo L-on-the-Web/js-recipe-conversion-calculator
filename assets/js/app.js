@@ -152,7 +152,7 @@ submitBtn.addEventListener("click", (e) => {
     console.log(`The Conversion Factor is ${conversionFactor()}.`);
 
     // Multiply each quantity by conversionFactor
-    const solveCF = filteredQuantity.map(f => f * conversionFactor())
+    const solveCF = filteredQuantity.map(f => f * conversionFactor());
 
     const result = solveCF.map((cf, index) => {
       return {
@@ -163,8 +163,14 @@ submitBtn.addEventListener("click", (e) => {
     });
     console.log(result);
 
+    if (scaledContainer.firstChild) {
+      scaledContainer.removeChild(scaledContainer.firstChild);
+    };
+
     const scaleCard = document.createElement("div");
     scaleCard.classList.add("scale-card");
+    scaleCard.id = Date.now();
+    scaleCard.innerHTML = `<div class="card-tag">Resized</div>`;
 
     function appendUserVals() {
       const scaleContent = document.createElement("div");
@@ -172,7 +178,6 @@ submitBtn.addEventListener("click", (e) => {
       scaleContent.innerHTML = `
         <h2>${recipeName}</h2>
         <p>Serves: ${convertToFraction(conversionFactor())}</p>
-        <br/>
         <h3>Ingredients</h3>`;
 
       // Loop through each user value
@@ -188,6 +193,15 @@ submitBtn.addEventListener("click", (e) => {
         scaleContent.append(newItem);
       })
       scaleCard.appendChild(scaleContent);
+      const animation = scaleCard.animate(
+        [{ transform: 'translateY(25px)' }, { transform: 'translateY(0px)' }],
+        {
+          duration: 700,
+          iterations: 1,
+          direction: 'normal',
+          easing: 'ease-in-out',
+        }
+      );
       return scaledContainer.appendChild(scaleCard);
     }
     return appendUserVals(result);
