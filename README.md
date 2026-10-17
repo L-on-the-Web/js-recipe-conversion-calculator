@@ -20,11 +20,11 @@ An application coded using basic HTML, CSS, and JavaScript to calculate recipe p
 - [X] Add form validation before submitting
 - [X] Replace previous results when resubmitting
 - [X] Change decimals to fractions
-- [ ] Append original recipe scaling to scaled section for comparison
-- [ ] Offer option to print results
+- [X] Append original recipe scaling to scaled section for comparison
+- [X] Offer option to print results
 
 ### CSS
-- [ ] Optimize desktop layout
+- [X] Optimize desktop layout
 - [ ] Optimize mobile layout
 
 ## Optional Additions
