@@ -1,5 +1,5 @@
-import convertToFraction from "./fractions";
-import formValidation from "./formValidation";
+import convertToFraction from "./fractions.js";
+import formValidation from "./formValidation.js";
 
 function submitForm() {
   const recipeName = document.querySelector("#recipe-name").value;
