@@ -1,5 +1,7 @@
 import convertToFraction from "./fractions.js";
 import formValidation from "./formValidation.js";
+import shiftUnit from "./unitShift.js";
+import { conversions } from "./unitShift.js";
 
 function submitForm() {
   const recipeName = document.querySelector("#recipe-name").value;
@@ -41,17 +43,22 @@ function submitForm() {
     // Multiply each quantity by conversionFactor
     const result = filteredQuantity.map((f, index) => {
       const cf = f * conversionFactor();
+      const { amount_1, unit_1, amount_2, unit_2 } = shiftUnit(cf, filteredMeasure[index]);
       return {
-        qty: cf,
-        meas: filteredMeasure[index],
+        qty: amount_1,
+        meas: unit_1,
+        qty_2: amount_2,
+        meas_2: unit_2,
         name: sanitizeInput[index]
       }
     });
 
     const ingObject = filteredQuantity.map((f, index) => {
+      const ing = conversions.find(u => u.unit === filteredMeasure[index]);
+
       return {
         qty: f,
-        meas: filteredMeasure[index],
+        meas: ing.name,
         name: sanitizeInput[index]
       }
     });
@@ -79,12 +86,24 @@ function submitForm() {
         const newItem = document.createElement("div");
         newItem.classList.add("scaled-row");
         // Each row is the new value
-        newItem.innerHTML = `
-          <input type="checkbox" name="ing-check" disabled></input>
-          <span>${convertToFraction(row.qty)}</span>
-          <span>${row.meas}</span>
-          <span>${row.name}</span>`
+        if (row.qty_2 !== undefined) {
+          newItem.innerHTML = `
+            <input type="checkbox" name="ing-check" disabled></input>
+            <span>${convertToFraction(+row.qty)}</span>
+            <span>${row.meas},</span>
+            <span>${convertToFraction(+row.qty_2)}</span>
+            <span>${row.meas_2}</span>
+            <span>${row.name}</span>`
           scaleContent.append(newItem);
+        } else {
+          //console.log(`${row.qty}: ${typeof row.qty}`);
+          newItem.innerHTML = `
+            <input type="checkbox" name="ing-check" disabled></input>
+            <span>${convertToFraction(+row.qty)}</span>
+            <span>${row.meas}</span>
+            <span>${row.name}</span>`
+          scaleContent.append(newItem);
+        }
       });
       scaleCard.appendChild(scaleContent);
 
@@ -183,6 +202,19 @@ addIngBtn.addEventListener("click", (e) => {
 const submitBtn = document.querySelector("#submit-form");
 const printBtn = document.querySelector("#print-btn");
 const deleteButton = document.querySelectorAll(".delete-btn");
+const clearBtn = document.querySelector("#reset-form");
+
+// Keyboard shortcuts
+document.addEventListener("keydown", (e) => {
+  const form = document.querySelector(".og-form");
+  if (e.key === "Enter") {
+    e.preventDefault();
+    submitForm();
+  };
+  if (e.ctrlKey && e.code === "KeyC") {
+    form.reset();
+  }
+})
 
 // Calculate scaled recipe on button click
 submitBtn.addEventListener("click", (e) => {
