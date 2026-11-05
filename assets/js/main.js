@@ -47,8 +47,8 @@ function submitForm() {
       return {
         qty: amount_1,
         meas: unit_1,
-        qty_2: amount_2,
-        meas_2: unit_2,
+        qty_2: amount_2 === 'undefined' ? undefined : amount_2,
+        meas_2: unit_2 === 'undefined' ? undefined : unit_2,
         name: sanitizeInput[index]
       }
     });
@@ -86,7 +86,7 @@ function submitForm() {
         const newItem = document.createElement("div");
         newItem.classList.add("scaled-row");
         // Each row is the new value
-        if (row.qty_2 !== undefined) {
+        if (row.qty_2 && row.meas_2) {
           newItem.innerHTML = `
             <input type="checkbox" name="ing-check" disabled></input>
             <span>${convertToFraction(+row.qty)}</span>
@@ -202,10 +202,15 @@ addIngBtn.addEventListener("click", (e) => {
 const submitBtn = document.querySelector("#submit-form");
 const printBtn = document.querySelector("#print-btn");
 const deleteButton = document.querySelectorAll(".delete-btn");
-const clearBtn = document.querySelector("#reset-form");
+//const clearBtn = document.querySelector("#reset-form");
+
+const modalBtn = document.querySelector("#open-help-modal");
+const modalBox = document.querySelector("#myModal");
+const closeModal = document.querySelector("#close-modal");
 
 // Keyboard shortcuts
 document.addEventListener("keydown", (e) => {
+  console.log(e.code);
   const form = document.querySelector(".og-form");
   if (e.key === "Enter") {
     e.preventDefault();
@@ -213,6 +218,33 @@ document.addEventListener("keydown", (e) => {
   };
   if (e.ctrlKey && e.code === "KeyC") {
     form.reset();
+  }
+  if (e.altKey && e.code === "KeyH" || e.key === "F1") {
+    e.preventDefault();
+    modalBox.open ? modalBox.close() : modalBox.showModal();
+  }
+})
+
+modalBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  modalBox.showModal();
+})
+
+closeModal.addEventListener("click", (e) => {
+  e.preventDefault();
+  modalBox.close();
+})
+
+modalBox.addEventListener("click", (e) => {
+  const rect = modalBox.getBoundingClientRect();
+  const isInModalBox = (
+    e.clientX >= rect.left &&
+    e.clientX <= rect.right &&
+    e.clientX >= rect.top &&
+    e.clientX <= rect.bottom
+  );
+  if (!isInModalBox) {
+    modalBox.close();
   }
 })
 
