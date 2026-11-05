@@ -7,6 +7,9 @@
   --stroke: #a9a9a9;
   --blue-light: #007ca9;
   --blue-dark: #006083;
+  --red-light: #f34235;
+  --red-dark: #e30413;
+  --semi-bold-font: 600;
 }
 
 /*--- Resets ---*/
@@ -83,6 +86,69 @@ main {
   border: 1px solid var(--border);
   border-radius: 5px;
   background-color: #d7dfd1;
+}
+
+/*--- Modal Dialog Box ---*/
+#open-help-modal {
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-color: transparent;
+  border: 1px solid var(--text);
+  border-radius: 9999px;
+  font-size: 12px;
+  align-self: flex-end;
+}
+
+dialog {
+  margin: 7% auto;
+  padding: 20px;
+  background-color: var(--card-background);
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.16);
+}
+
+dialog:open {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  place-items: center;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  padding-bottom: 15px;
+}
+
+kbd {
+  padding: 6px;
+  background-color: var(--background);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.kbd-description {
+  padding: 10px 0 10px 12%;
+}
+
+tfoot td {
+  padding-top: 10px;
+}
+
+#close-modal {
+  margin-top: 15px;
+  width: 50%;
+  background-color: var(--red-light);
+  color: white;
+  font-weight: var(--semi-bold-font);
+}
+
+#close-modal:hover, #close-modal:focus {
+  background-color: var(--red-dark);
 }
 
 form {
@@ -186,7 +252,7 @@ input[type="submit"] {
   background-color: var(--blue-light);
   color: white;
   border: none;
-  font-weight: 600;
+  font-weight: var(--semi-bold-font);
   transition: 0.3s ease;
 }
 
@@ -196,7 +262,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 
 input[type="reset"] {
   width: 30%;
-  font-weight: 600;
+  font-weight: var(--semi-bold-font);
 }
 
 .scale-field {
@@ -210,7 +276,7 @@ input[type="reset"] {
   background-color: var(--blue-light);
   color: white;
   border: none;
-  font-weight: 600;
+  font-weight: var(--semi-bold-font);
 }
 
 .print-btn:hover, .print-btn:focus {
@@ -233,7 +299,7 @@ input[type="reset"] {
   justify-self: end;
   border-radius: 99px 0 0 99px;
   font-size: 0.825rem;
-  font-weight: 600;
+  font-weight: var(--semi-bold-font);
 }
 
 .old-tag {
