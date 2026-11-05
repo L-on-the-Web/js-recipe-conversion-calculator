@@ -4,11 +4,22 @@ function getGCD(a, b) {
 }
 
 export default function convertToFraction(decimal) {
+  //console.log(`${typeof decimal} ${decimal} is an integer: ${Number.isInteger(decimal)}`);
   if (Number.isInteger(decimal)) return decimal.toString();
+
+  switch (decimal) {
+    case 0.333:
+      return '1/3'
+      break;
+    case 0.667:
+      return '2/3';
+      break;
+  }
 
   // 1. Separate whole number and decimal parts
   const wholeNumber = Math.floor(decimal)
   const decimalPart = (decimal - wholeNumber).toFixed(10) // Avoid floating point precision issues
+  if (/(?<=\.)0/.test(decimal)) return `${wholeNumber}`;  // /(?<=\.)0/.test(decimal) - ignore decimals that are too small
 
   // 2. Count decimal places to determine the denominator base
   const fractionLength = decimalPart.toString().split('.')[1].replace(/0+$/, '').length;
