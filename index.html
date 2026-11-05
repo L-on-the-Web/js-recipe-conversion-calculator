@@ -13,6 +13,36 @@
     </header>
     <main>
       <form class="og-form">
+        <button id="open-help-modal">?</button>
+        <dialog id="myModal">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="2">Keyboard Shortcuts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><kbd>Enter</kbd></td>
+                <td class="kbd-description">Submit form</td>
+              </tr>
+              <tr>
+                <td><kbd>Ctrl</kbd> + <kbd>C</kbd></td>
+                <td class="kbd-description">Clear form inputs</td>
+              </tr>
+              <tr>
+                <td><kbd>Alt</kbd> + <kbd>H</kbd></td>
+                <td class="kbd-description">Show / Close help dialog</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2">Click / Tap anywhere to close the dialog.</td>
+              </tr>
+            </tfoot>
+          </table>
+          <button id="close-modal" class="btn">Close</button>
+        </dialog>
         <fieldset class="name-field">
           <legend><h2>Recipe Name</h2></legend>
           <input type="text" name="recipe-name" id="recipe-name" placeholder="Recipe Name" required>
