@@ -34,4 +34,4 @@ An application coded using basic HTML, CSS, and JavaScript to calculate recipe p
 ### Optional Additions
 - [ ] Convert user inputted fractions to decimals
 - [ ] Switch views between fractions and decimals
-- [ ] Implement smart unit shifting when converting
+- [X] Implement smart unit shifting when converting
